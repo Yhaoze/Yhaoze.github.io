@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Yhaoze.github.io</id>
     <title>Yhaoze&apos;s blog</title>
-    <updated>2020-05-20T16:15:19.900Z</updated>
+    <updated>2020-05-20T16:17:16.265Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Yhaoze.github.io"/>
     <link rel="self" href="https://Yhaoze.github.io/atom.xml"/>
@@ -10,20 +10,4 @@
     <logo>https://Yhaoze.github.io/images/avatar.png</logo>
     <icon>https://Yhaoze.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Yhaoze&apos;s blog</rights>
-    <entry>
-        <title type="html"><![CDATA[关于本站]]></title>
-        <id>https://Yhaoze.github.io/post/about/</id>
-        <link href="https://Yhaoze.github.io/post/about/">
-        </link>
-        <updated>2019-01-25T11:09:48.000Z</updated>
-        <content type="html"><![CDATA[<p>一时兴起，完全没有规划的，就开了一个自己的博客。还不知道会用来干嘛。</p>
-<p>也许会尝试着每周记录一些读书笔记，将读过的论文记录下来，希望能坚持下去。</p>
-<p>还会记录一些日常用的小玩意儿，比如经常忘记的LINUX的命令之类的。</p>
-<blockquote>
-<p>Author : Yang<br>
-Data : 20200521<br>
-Time : 0014</p>
-</blockquote>
-]]></content>
-    </entry>
 </feed>
