@@ -47,7 +47,6 @@
                     })();
                 </script>
                 
-        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
 </head>
 
 <body>
@@ -160,67 +159,162 @@
 </script>
             <div class="main">
                 <div class="container">
-                    <div class="intro">
-                        <div class="avatar">
-                            <a href="https://Yhaoze.github.io"><img src="https://Yhaoze.github.io/images/avatar.png?v=1590812011161"></a>
-                        </div>
-                        <div class="nickname">
-                            木昜
-                        </div>
-                        <div class="description">
-                            <span id="subtitle">
-                                
-                            </span>
-                        </div>
-                        <div class="links">
+                    <article class="post-wrap">
+                        <header class="post-header">
+                            <h1 class="post-title">
+                                [Paper][EMNLP-2019]Multi-label Categorization of Accounts of Sexism using a Neural Framework
+                            </h1>
                             
+                                <!--en-->
+                                <div class="post-meta en">
+                                    Author:
+                                    <a itemprop="author" rel="author" href="/">
+                                        Yhaoze's blog
+                                    </a>
+                                    <span class="post-time">
+                                Date: <a href="#">2020-05-29</a>
+                            </span>
+                                    <span class="post-readtime">Reading Time:<a
+                                    href="#">1.4
+                                    mins</a></span>
+                                    <span class="post-words">words:<a href="#">355</a></span>
+                                    
+                                            Views:
+                                            <span data-hk-page="current"> - </span>
+                                            
+                                </div>
                                 
-                                        
-                                
-                                        
-                                
-                                        
-                                
-                                        
-                                
-                                        
-                                
-                                        
-                                
-                                        
-                                
-                                        
-                                
-                                        
-                                
-                                        
+                        </header>
+                        
+                        <div class="post-content">
+                            <h2 id="overview">Overview</h2>
+<ul>
+<li>
+<p>应用场景：网络上关于性别歧视内容的识别与分类</p>
+</li>
+<li>
+<p>数据来源：Everyday Sexism Project website中的13023个条目，并由10名注释人员标注标签</p>
+</li>
+<li>
+<p>嵌入模型：</p>
+<ul>
+<li>
+<p>词嵌入：</p>
+<ul>
+<li>ELMo (Embeddings from Language Models)</li>
+<li>GloVe (Global Vectors)</li>
+<li>fastText</li>
+</ul>
+</li>
+<li>
+<p>句嵌入：</p>
+<ul>
+<li>BERT (Bidirectional Encoder Representations from Transformers)</li>
+<li>USE (Universal Sentence Encoder)</li>
+<li>InferSent</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>贡献：</p>
+<ul>
+<li>提出了一个用于性别歧视问题的、多标签分类的神经框架</li>
+<li>对任何类型的性别歧视问题进行了考虑</li>
+<li>提供了一个包括13023个性别歧视说明的数据集，并制定了23种性别歧视类别</li>
+</ul>
+</li>
+</ul>
+<h2 id="model">Model</h2>
+<figure data-type="image" tabindex="1"><img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_model.png" alt="" loading="lazy"></figure>
+<ul>
+<li>word embedding部分为多个不同的词嵌入模块共同组成；</li>
+<li>sentence embedding部分为多个不同的句嵌入模块组成；</li>
+<li>configurable word-level concatenated部分是通过不同的词嵌入模块得到的嵌入向量组合得到的不同结果；</li>
+<li>configurable sentence-level concatenated部分是通过不同句嵌入模块得到的嵌入向量和通过CNN/biLSTM学习得到的词嵌入的特征向量组合得到的不同结果。</li>
+<li>loss函数部分：由于交叉熵函数不适合多标签的分类任务，提供了两个变种。
+<ul>
+<li>EBCE:<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_loss_EBCE.jpg" alt="" loading="lazy"></li>
+<li>EBCE weight:<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_loss_EBCE_weight.jpg" alt="" loading="lazy"></li>
+<li>NCE: <img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_loss_NCE.jpg" alt="" loading="lazy"></li>
+<li>NCE weight:<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_loss_NCE_weight.png" alt="" loading="lazy"></li>
+</ul>
+</li>
+</ul>
+<h2 id="experiment">Experiment</h2>
+<ul>
+<li>
+<p>验证了传统的机器学习算法在多标签任务中的短板：</p>
+<figure data-type="image" tabindex="2"><img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_experiment_1.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>检验了不同的模型结构（CNN/biLSTM; word embedding/sentence embedding; EBCE loss/NCE loss）对结果的影响:</p>
+<figure data-type="image" tabindex="3"><img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_experiment_2.png" alt="" loading="lazy"></figure>
+</li>
+</ul>
+
                         </div>
-                    </div>
+                        
+                                
+                                    
+                                        <!--en-->
+                                        <section class="post-copyright en">
+                                            <p class="copyright-item">
+                                                <span>Author:</span>
+                                                <span>Yhaoze's blog</span>
+                                            </p>
+
+                                            <p class="copyright-item">
+                                                <span>Permalink:</span>
+                                                <span><a href="https://Yhaoze.github.io/post/paperemnlp-2019multi-label-categorization-of-accounts-of-sexism-using-a-neural-framework/">https://Yhaoze.github.io/post/paperemnlp-2019multi-label-categorization-of-accounts-of-sexism-using-a-neural-framework/</a></span>
+                                            </p>
+
+                                            <p class="copyright-item">
+                                                <span>License:</span>
+                                                <span>MIT License</span>
+                                            </p>
+                                        </section>
+                                        
+                                                
+                                                    
+                                                        <!-- Share-->
+                                                        <span style="margin-right:15px">
+                                                    <i class="post-share"></i>
+                                                    <span>Share:</span>
+                                                        <a title="QR Code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://Yhaoze.github.io/post/paperemnlp-2019multi-label-categorization-of-accounts-of-sexism-using-a-neural-framework/"><i class="fa fa-qrcode"></i></a>
+                                                        <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://Yhaoze.github.io/post/paperemnlp-2019multi-label-categorization-of-accounts-of-sexism-using-a-neural-framework/&sharesource=qzone&title=[Paper][EMNLP-2019]Multi-label Categorization of Accounts of Sexism using a Neural Framework&pics=https://Yhaoze.github.io/images/avatar.png?v=1590812011161&summary="><i class="fa fa-qq"></i></a>
+                                                        <a title="Weibo" target="_blank" href="https://service.weibo.com/share/share.php?url=https://Yhaoze.github.io/post/paperemnlp-2019multi-label-categorization-of-accounts-of-sexism-using-a-neural-framework/&sharesource=weibo&title=[Paper][EMNLP-2019]Multi-label Categorization of Accounts of Sexism using a Neural Framework + " - " + &pic="https://Yhaoze.github.io/images/avatar.png?v=1590812011161 "><i class="fa fa-weibo "></i></a>
+                                                        
+                                                                </span>
+                                                                <!--en-->
+                                                                <section class="post-tags en ">
+                                                                    <div>
+                                                                        <span>Tag(s):</span>
+                                                                        <span class="tag ">
+                        
+                                                            </span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <a href="javascript:window.history.back();">back</a>
+                                                                        <span>&dot;</span>
+                                                                        <a href="#">home</a>
+                                                                    </div>
+                                                                </section>
+                                                                
+                                                                                <!---->
+                                                                                <section class="post-nav">
+                                                                                    
+                                                                                            
+                                                                                </section>
+                    </article>
                 </div>
+                
+                                            
             </div>
     </div>
-
-</body>
-<script>
-    // type 
-    var typed = new Typed("#subtitle", {
-        strings: ['', '', ''],
-        startDelay: 10,
-        typeSpeed: 200,
-        loop: true,
-        backSpeed: 100,
-        showCursor: true
-    });
-    //head title
-    var titleTime;
-    document.addEventListener("visibilitychange", function() {
-        document.hidden ? (document.title = "\uD83D\uDE25" + OriginTitile, clearTimeout(titleTime)) : (document.title = "\uD83D\uDE1D" + OriginTitile, titleTime = setTimeout(function() {
-            document.title = OriginTitile
-        }, 2E3))
-    });
-    var OriginTitile = document.title;
-</script>
-
+    </div>
+    </div>
+    
         <footer id="footer" class="footer">
             <div class="copyright">
                 
@@ -321,5 +415,10 @@
                         tpwidget("show");
                     </script>
                     
+        </div>
+</body>
+<script>
+    scroll();
+</script>
 
 </html>
