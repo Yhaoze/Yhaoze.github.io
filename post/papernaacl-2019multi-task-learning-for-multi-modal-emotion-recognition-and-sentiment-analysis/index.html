@@ -159,43 +159,152 @@
 </script>
             <div class="main">
                 <div class="container">
-                    <div class="post-wrap archive">
-                        
+                    <article class="post-wrap">
+                        <header class="post-header">
+                            <h1 class="post-title">
+                                [Paper][NAACL-2019]Multi-task Learning for Multi-modal Emotion Recognition and Sentiment Analysis
+                            </h1>
                             
-                                <h3>
-                                    2020
-                                </h3>
+                                <!--en-->
+                                <div class="post-meta en">
+                                    Author:
+                                    <a itemprop="author" rel="author" href="/">
+                                        Yhaoze's blog
+                                    </a>
+                                    <span class="post-time">
+                                Date: <a href="#">2020-06-06</a>
+                            </span>
+                                    <span class="post-readtime">Reading Time:<a
+                                    href="#">1.1
+                                    mins</a></span>
+                                    <span class="post-words">words:<a href="#">311</a></span>
+                                    
+                                        <span class="post-category">
+                                Category:
+                                
+                                <a href="https://Yhaoze.github.io/tag/ialWn3NEw/">paper review</a>
+                                
+                            </span>
+                                        
+                                            Views:
+                                            <span data-hk-page="current"> - </span>
+                                            
+                                </div>
+                                
+                        </header>
+                        
+                        <div class="post-content">
+                            <h1 id="overview">Overview</h1>
+<ul>
+<li>
+<p>应用场景：多种不同的信息输入（如：文本、音频、视频信息）情况下的情感识别</p>
+</li>
+<li>
+<p>只要贡献：</p>
+<ul>
+<li>利用有效的多模式框架，将两个相关任务（即情感识别和情绪分类任务）的相互依存关系改善结果；</li>
+<li>提出了语境间（inter-modal）注意力机制，该机制有助于模型同时为做出贡献的语境话语和/或语气分配权重；</li>
+<li>提供了“最先进的”（文章自称）情感识别和情绪分类方法。</li>
+</ul>
+</li>
+<li>
+<p>数据来源：CMU Multi-modal Opinion Sentiment and Emotion Intensity (CMU-MOSEI) dataset</p>
+<p>​	这个数据集包含了文本、音频、视频三种不同模式的输入。</p>
+</li>
+</ul>
+<h1 id="model">Model</h1>
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper2_model.png" width="600px" />
+<ul>
+<li>
+<p>embedding: Text - GloVe; Visual - Facets; Acoustic - CovaRap.</p>
+</li>
+<li>
+<p>主模型：三种不同模式的输入信息分别通过三个BiGRU网络得到三个不同的特征矩阵，接着由CIM-Attention层学习模式两两之间的关联情况，最后分别通过softmax层（情感识别）和sigmoid层（情绪分类）得到最终的结果。</p>
+</li>
+<li>
+<p>CIM-Attention:</p>
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper2_CIM-Attention.jpg" width="300px" />
+</li>
+</ul>
+<h1 id="experiment">Experiment</h1>
+<ul>
+<li>验证了多任务模型会比单任务模型具有更好的效果：</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper2_experiment_1.jpg" width="700px" />
+<ul>
+<li>对CIM-Attention的attention weights做了可视化处理，帮助解释模型的工作原理：</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper2_experiment_2.jpg" width="700px" />
+                        </div>
+                        
                                 
                                     
+                                        <!--en-->
+                                        <section class="post-copyright en">
+                                            <p class="copyright-item">
+                                                <span>Author:</span>
+                                                <span>Yhaoze's blog</span>
+                                            </p>
 
-                                        <article class="archive-item">
-                                            <a class="archive-item-link" href="https://Yhaoze.github.io/post/papernaacl-2019multi-task-learning-for-multi-modal-emotion-recognition-and-sentiment-analysis/">
-                                                [Paper][NAACL-2019]Multi-task Learning for Multi-modal Emotion Recognition and Sentiment Analysis
-                                            </a>
-                                            <span class="archive-item-date">2020-06-06 </span>
-                                        </article>
-                                        
-                                            
-                                    
+                                            <p class="copyright-item">
+                                                <span>Permalink:</span>
+                                                <span><a href="https://Yhaoze.github.io/post/papernaacl-2019multi-task-learning-for-multi-modal-emotion-recognition-and-sentiment-analysis/">https://Yhaoze.github.io/post/papernaacl-2019multi-task-learning-for-multi-modal-emotion-recognition-and-sentiment-analysis/</a></span>
+                                            </p>
 
-                                        <article class="archive-item">
-                                            <a class="archive-item-link" href="https://Yhaoze.github.io/post/paperemnlp-2019multi-label-categorization-of-accounts-of-sexism-using-a-neural-framework/">
-                                                [Paper][EMNLP-2019]Multi-label Categorization of Accounts of Sexism using a Neural Framework
-                                            </a>
-                                            <span class="archive-item-date">2020-05-29 </span>
-                                        </article>
+                                            <p class="copyright-item">
+                                                <span>License:</span>
+                                                <span>MIT License</span>
+                                            </p>
+                                        </section>
                                         
-                                            
                                                 
-                    </div>
-                    <div class="pagination-container">
-                        
-                                                
+                                                    
+                                                        <!-- Share-->
+                                                        <span style="margin-right:15px">
+                                                    <i class="post-share"></i>
+                                                    <span>Share:</span>
+                                                        <a title="QR Code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://Yhaoze.github.io/post/papernaacl-2019multi-task-learning-for-multi-modal-emotion-recognition-and-sentiment-analysis/"><i class="fa fa-qrcode"></i></a>
+                                                        <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://Yhaoze.github.io/post/papernaacl-2019multi-task-learning-for-multi-modal-emotion-recognition-and-sentiment-analysis/&sharesource=qzone&title=[Paper][NAACL-2019]Multi-task Learning for Multi-modal Emotion Recognition and Sentiment Analysis&pics=https://Yhaoze.github.io/images/avatar.png?v=1591444619142&summary="><i class="fa fa-qq"></i></a>
+                                                        <a title="Weibo" target="_blank" href="https://service.weibo.com/share/share.php?url=https://Yhaoze.github.io/post/papernaacl-2019multi-task-learning-for-multi-modal-emotion-recognition-and-sentiment-analysis/&sharesource=weibo&title=[Paper][NAACL-2019]Multi-task Learning for Multi-modal Emotion Recognition and Sentiment Analysis + " - " + &pic="https://Yhaoze.github.io/images/avatar.png?v=1591444619142 "><i class="fa fa-weibo "></i></a>
                                                         
+                                                                </span>
+                                                                <!--en-->
+                                                                <section class="post-tags en ">
+                                                                    <div>
+                                                                        <span>Tag(s):</span>
+                                                                        <span class="tag ">
+                        
+                        
+                        <a href="https://Yhaoze.github.io/tag/ialWn3NEw/">#
+                                                paper review
+                                                    </a>
+                                                    
+                                                        
+                                                            </span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <a href="javascript:window.history.back();">back</a>
+                                                                        <span>&dot;</span>
+                                                                        <a href="#">home</a>
+                                                                    </div>
+                                                                </section>
                                                                 
-                    </div>
+                                                                                <!---->
+                                                                                <section class="post-nav">
+                                                                                    
+                                                                                            
+                                                                                                <a class="next" rel="next" href="https://Yhaoze.github.io/post/paperemnlp-2019multi-label-categorization-of-accounts-of-sexism-using-a-neural-framework/">
+                                                                                                    [Paper][EMNLP-2019]Multi-label Categorization of Accounts of Sexism using a Neural Framework
+                                                                                                </a>
+                                                                                                
+                                                                                </section>
+                    </article>
                 </div>
+                
+                                            
             </div>
+    </div>
+    </div>
     </div>
     
         <footer id="footer" class="footer">
@@ -300,5 +409,8 @@
                     
         </div>
 </body>
+<script>
+    scroll();
+</script>
 
 </html>

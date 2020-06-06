@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Yhaoze.github.io</id>
     <title>Yhaoze&apos;s blog</title>
-    <updated>2020-06-06T11:09:36.891Z</updated>
+    <updated>2020-06-06T11:57:03.425Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Yhaoze.github.io"/>
     <link rel="self" href="https://Yhaoze.github.io/atom.xml"/>
@@ -10,6 +10,54 @@
     <logo>https://Yhaoze.github.io/images/avatar.png</logo>
     <icon>https://Yhaoze.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Yhaoze&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[[Paper][NAACL-2019]Multi-task Learning for Multi-modal Emotion Recognition and Sentiment Analysis]]></title>
+        <id>https://Yhaoze.github.io/post/papernaacl-2019multi-task-learning-for-multi-modal-emotion-recognition-and-sentiment-analysis/</id>
+        <link href="https://Yhaoze.github.io/post/papernaacl-2019multi-task-learning-for-multi-modal-emotion-recognition-and-sentiment-analysis/">
+        </link>
+        <updated>2020-06-06T11:11:28.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="overview">Overview</h1>
+<ul>
+<li>
+<p>应用场景：多种不同的信息输入（如：文本、音频、视频信息）情况下的情感识别</p>
+</li>
+<li>
+<p>只要贡献：</p>
+<ul>
+<li>利用有效的多模式框架，将两个相关任务（即情感识别和情绪分类任务）的相互依存关系改善结果；</li>
+<li>提出了语境间（inter-modal）注意力机制，该机制有助于模型同时为做出贡献的语境话语和/或语气分配权重；</li>
+<li>提供了“最先进的”（文章自称）情感识别和情绪分类方法。</li>
+</ul>
+</li>
+<li>
+<p>数据来源：CMU Multi-modal Opinion Sentiment and Emotion Intensity (CMU-MOSEI) dataset</p>
+<p>​	这个数据集包含了文本、音频、视频三种不同模式的输入。</p>
+</li>
+</ul>
+<h1 id="model">Model</h1>
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper2_model.png" width="600px" />
+<ul>
+<li>
+<p>embedding: Text - GloVe; Visual - Facets; Acoustic - CovaRap.</p>
+</li>
+<li>
+<p>主模型：三种不同模式的输入信息分别通过三个BiGRU网络得到三个不同的特征矩阵，接着由CIM-Attention层学习模式两两之间的关联情况，最后分别通过softmax层（情感识别）和sigmoid层（情绪分类）得到最终的结果。</p>
+</li>
+<li>
+<p>CIM-Attention:</p>
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper2_CIM-Attention.jpg" width="300px" />
+</li>
+</ul>
+<h1 id="experiment">Experiment</h1>
+<ul>
+<li>验证了多任务模型会比单任务模型具有更好的效果：</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper2_experiment_1.jpg" width="700px" />
+<ul>
+<li>对CIM-Attention的attention weights做了可视化处理，帮助解释模型的工作原理：</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper2_experiment_2.jpg" width="700px" />]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[Paper][EMNLP-2019]Multi-label Categorization of Accounts of Sexism using a Neural Framework]]></title>
         <id>https://Yhaoze.github.io/post/paperemnlp-2019multi-label-categorization-of-accounts-of-sexism-using-a-neural-framework/</id>
