@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Yhaoze.github.io</id>
     <title>Yhaoze&apos;s blog</title>
-    <updated>2020-06-06T11:07:57.848Z</updated>
+    <updated>2020-06-06T11:09:36.891Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Yhaoze.github.io"/>
     <link rel="self" href="https://Yhaoze.github.io/atom.xml"/>
@@ -74,11 +74,11 @@
 <ul>
 <li>
 <p>验证了传统的机器学习算法在多标签任务中的短板：</p>
-<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_experiment_1.png" width="600px" />
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_experiment_1.png" width="800px" />
 </li>
 <li>
 <p>检验了不同的模型结构（CNN/biLSTM; word embedding/sentence embedding; EBCE loss/NCE loss）对结果的影响:</p>
-<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_experiment_2.png" width="400px" /></li>
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_experiment_2.png" width="500px" /></li>
 </ul>
 ]]></content>
     </entry>
