@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Yhaoze.github.io</id>
     <title>Yhaoze&apos;s blog</title>
-    <updated>2020-05-30T05:16:45.843Z</updated>
+    <updated>2020-06-06T11:07:57.848Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Yhaoze.github.io"/>
     <link rel="self" href="https://Yhaoze.github.io/atom.xml"/>
@@ -55,7 +55,7 @@
 </li>
 </ul>
 <h1 id="model">Model</h1>
-<figure data-type="image" tabindex="1"><img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_model.png" alt="" loading="lazy"></figure>
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_model.png" width="600px" />
 <ul>
 <li>word embedding部分为多个不同的词嵌入模块共同组成；</li>
 <li>sentence embedding部分为多个不同的句嵌入模块组成；</li>
@@ -63,10 +63,10 @@
 <li>configurable sentence-level concatenated部分是通过不同句嵌入模块得到的嵌入向量和通过CNN/biLSTM学习得到的词嵌入的特征向量组合得到的不同结果。</li>
 <li>loss函数部分：由于交叉熵函数不适合多标签的分类任务，提供了两个变种。
 <ul>
-<li>EBCE:<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_loss_EBCE.jpg" alt="" loading="lazy"></li>
-<li>EBCE weight:<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_loss_EBCE_weight.jpg" alt="" loading="lazy"></li>
-<li>NCE: <img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_loss_NCE.jpg" alt="" loading="lazy"></li>
-<li>NCE weight:<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_loss_NCE_weight.png" alt="" loading="lazy"></li>
+<li>EBCE:<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_loss_EBCE.jpg" width="300px" /></li>
+<li>EBCE weight:<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_loss_EBCE_weight.jpg" width="300px" /></li>
+<li>NCE: <img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_loss_NCE.jpg" width="300px" /></li>
+<li>NCE weight:<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_loss_NCE_weight.png" width="150px" /></li>
 </ul>
 </li>
 </ul>
@@ -74,12 +74,11 @@
 <ul>
 <li>
 <p>验证了传统的机器学习算法在多标签任务中的短板：</p>
-<figure data-type="image" tabindex="2"><img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_experiment_1.png" alt="" loading="lazy"></figure>
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_experiment_1.png" width="600px" />
 </li>
 <li>
 <p>检验了不同的模型结构（CNN/biLSTM; word embedding/sentence embedding; EBCE loss/NCE loss）对结果的影响:</p>
-<figure data-type="image" tabindex="3"><img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_experiment_2.png" alt="" loading="lazy"></figure>
-</li>
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_experiment_2.png" width="400px" /></li>
 </ul>
 ]]></content>
     </entry>
