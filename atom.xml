@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Yhaoze.github.io</id>
     <title>Yhaoze&apos;s blog</title>
-    <updated>2020-06-06T11:57:03.425Z</updated>
+    <updated>2020-06-13T12:51:55.998Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Yhaoze.github.io"/>
     <link rel="self" href="https://Yhaoze.github.io/atom.xml"/>
@@ -10,6 +10,70 @@
     <logo>https://Yhaoze.github.io/images/avatar.png</logo>
     <icon>https://Yhaoze.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Yhaoze&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[[Paper][NAACL-2019]HiGRU: Hierarchical Gated Recurrent Units for Utterance-level Emotion Recognition]]></title>
+        <id>https://Yhaoze.github.io/post/papernaacl-2019higru-hierarchical-gated-recurrent-units-for-utterance-level-emotion-recognition/</id>
+        <link href="https://Yhaoze.github.io/post/papernaacl-2019higru-hierarchical-gated-recurrent-units-for-utterance-level-emotion-recognition/">
+        </link>
+        <updated>2020-06-13T07:27:56.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="overview">Overview</h1>
+<ul>
+<li>
+<p>应用场景：对话模型中的情感识别</p>
+</li>
+<li>
+<p>解决问题：</p>
+<ul>
+<li>相同的单词在不同的上下文语境中可以传递不同的情感；</li>
+<li>在一般对话中很少见到某些强烈的情绪情感；</li>
+<li>很难有效地获取远程上下文信息。</li>
+</ul>
+</li>
+<li>
+<p>主要贡献：</p>
+<ul>
+<li>提出了HiGRU框架，能够更准确地学习语句的嵌入信息，并据此识别情感；</li>
+<li>提出了两种渐进式的HiGRU变体——HiGRU-f和HiGRU-sf，分别融合各个单词、话语级别的信息和长时上下文信息。</li>
+</ul>
+</li>
+<li>
+<p>数据来源：</p>
+<ul>
+<li>IEMOCAP：它包含了大约12个小时的视听数据，包括视频、语音、面部动作捕捉和文本转录内容，含有四种情感标签。</li>
+<li>FRIENDS：来自“老友记”的对话（及标注），包含八种情感标签（但进选取四个训练）。</li>
+<li>EmotionPush: 这个数据集中包含了1000个Facebook上的私人对话，包含有和FRIENDS相同的八种情感标签（同样只选取四个训练）。</li>
+</ul>
+</li>
+</ul>
+<h1 id="model">Model</h1>
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper3_model.png" width="900px">
+<ul>
+<li>
+<p>HiGRU（上图出去两个虚线框后的模型结构）: 主体结构分为两层，网络下层为左半边模型，在得到文本、话语的词嵌入（字嵌入）后，通过BiGRU网络（激励函数为tanh函数）获取句嵌入；网络上层为右半边模型，在得到句嵌入后，通过相似的结构（BiGRU）获得基于上下文信息的句嵌入，此后，一次通过全连接层和Softmax函数得到最终的情感分类。</p>
+</li>
+<li>
+<p>HiGRU-f（HiGRU+Fusion层）：在HiGRU结构的基础上又添加了Fusion层。Fusion层的作用是将各输入（下层网络中的词嵌入和上层网络中的句嵌入）与BiGRU结构的隐藏状态（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mrow><mi>f</mi><mi>o</mi><mi>r</mi><mi>w</mi><mi>a</mi><mi>r</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">h_{forward}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.10764em;">f</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight" style="margin-right:0.02691em;">w</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mrow><mi>b</mi><mi>a</mi><mi>c</mi><mi>k</mi><mi>w</mi><mi>a</mi><mi>r</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">h_{backward}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mord mathdefault mtight" style="margin-right:0.02691em;">w</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>）输出连接起来作为BiGRU结构的整体隐藏层。</p>
+</li>
+<li>
+<p>HiGRU-sf（HiGRU+Fusion+Attention）：在HiGRU结构的基础上又添加了Fusion层和Attention层，Fusion层同HiGRU-f，Attention层为自注意力层（self-attention），示意图如下：</p>
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper3_self-attention.png" width="400px">
+<p>其中：<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper3_attention-f.png" width="300px"></p>
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper3_attention-h.jpg" width="325px">	
+</li>
+</ul>
+<h1 id="experiment">Experiment</h1>
+<ul>
+<li>
+<p>验证了在IEMOCAP数据集上，HiGRU及两个变体都取得了更好的情感分类效果：</p>
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper3_experiment_1.png" width="500px">
+</li>
+<li>
+<p>验证了在FRIENDS和EmotionPush数据集上能得到更好的效果，且训练集不同，结果各有差异：</p>
+<p>（F代表只在FRIENDS数据集上训练，E代表只在EmotionPush数据集上训练，F+E代表两者共同作为训练集）</p>
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper3_experiment_2.jpg" width="800px"></li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[Paper][NAACL-2019]Multi-task Learning for Multi-modal Emotion Recognition and Sentiment Analysis]]></title>
         <id>https://Yhaoze.github.io/post/papernaacl-2019multi-task-learning-for-multi-modal-emotion-recognition-and-sentiment-analysis/</id>
@@ -22,7 +86,7 @@
 <p>应用场景：多种不同的信息输入（如：文本、音频、视频信息）情况下的情感识别</p>
 </li>
 <li>
-<p>只要贡献：</p>
+<p>主要贡献：</p>
 <ul>
 <li>利用有效的多模式框架，将两个相关任务（即情感识别和情绪分类任务）的相互依存关系改善结果；</li>
 <li>提出了语境间（inter-modal）注意力机制，该机制有助于模型同时为做出贡献的语境话语和/或语气分配权重；</li>

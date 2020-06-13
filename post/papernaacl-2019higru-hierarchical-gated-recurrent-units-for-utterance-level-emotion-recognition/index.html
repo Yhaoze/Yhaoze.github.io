@@ -162,7 +162,7 @@
                     <article class="post-wrap">
                         <header class="post-header">
                             <h1 class="post-title">
-                                [Paper][EMNLP-2019]Multi-label Categorization of Accounts of Sexism using a Neural Framework
+                                [Paper][NAACL-2019]HiGRU: Hierarchical Gated Recurrent Units for Utterance-level Emotion Recognition
                             </h1>
                             
                                 <!--en-->
@@ -172,12 +172,12 @@
                                         Yhaoze's blog
                                     </a>
                                     <span class="post-time">
-                                Date: <a href="#">2020-05-29</a>
+                                Date: <a href="#">2020-06-13</a>
                             </span>
                                     <span class="post-readtime">Reading Time:<a
-                                    href="#">1.4
+                                    href="#">2.2
                                     mins</a></span>
-                                    <span class="post-words">words:<a href="#">355</a></span>
+                                    <span class="post-words">words:<a href="#">607</a></span>
                                     
                                         <span class="post-category">
                                 Category:
@@ -197,66 +197,58 @@
                             <h1 id="overview">Overview</h1>
 <ul>
 <li>
-<p>应用场景：网络上关于性别歧视内容的识别与分类</p>
+<p>应用场景：对话模型中的情感识别</p>
 </li>
 <li>
-<p>数据来源：Everyday Sexism Project website中的13023个条目，并由10名注释人员标注标签</p>
-</li>
-<li>
-<p>嵌入模型：</p>
+<p>解决问题：</p>
 <ul>
-<li>
-<p>词嵌入：</p>
-<ul>
-<li>ELMo (Embeddings from Language Models)</li>
-<li>GloVe (Global Vectors)</li>
-<li>fastText</li>
+<li>相同的单词在不同的上下文语境中可以传递不同的情感；</li>
+<li>在一般对话中很少见到某些强烈的情绪情感；</li>
+<li>很难有效地获取远程上下文信息。</li>
 </ul>
 </li>
 <li>
-<p>句嵌入：</p>
+<p>主要贡献：</p>
 <ul>
-<li>BERT (Bidirectional Encoder Representations from Transformers)</li>
-<li>USE (Universal Sentence Encoder)</li>
-<li>InferSent</li>
-</ul>
-</li>
+<li>提出了HiGRU框架，能够更准确地学习语句的嵌入信息，并据此识别情感；</li>
+<li>提出了两种渐进式的HiGRU变体——HiGRU-f和HiGRU-sf，分别融合各个单词、话语级别的信息和长时上下文信息。</li>
 </ul>
 </li>
 <li>
-<p>贡献：</p>
+<p>数据来源：</p>
 <ul>
-<li>提出了一个用于性别歧视问题的、多标签分类的神经框架</li>
-<li>对任何类型的性别歧视问题进行了考虑</li>
-<li>提供了一个包括13023个性别歧视说明的数据集，并制定了23种性别歧视类别</li>
+<li>IEMOCAP：它包含了大约12个小时的视听数据，包括视频、语音、面部动作捕捉和文本转录内容，含有四种情感标签。</li>
+<li>FRIENDS：来自“老友记”的对话（及标注），包含八种情感标签（但进选取四个训练）。</li>
+<li>EmotionPush: 这个数据集中包含了1000个Facebook上的私人对话，包含有和FRIENDS相同的八种情感标签（同样只选取四个训练）。</li>
 </ul>
 </li>
 </ul>
 <h1 id="model">Model</h1>
-<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_model.png" width="600px" />
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper3_model.png" width="900px">
 <ul>
-<li>word embedding部分为多个不同的词嵌入模块共同组成；</li>
-<li>sentence embedding部分为多个不同的句嵌入模块组成；</li>
-<li>configurable word-level concatenated部分是通过不同的词嵌入模块得到的嵌入向量组合得到的不同结果；</li>
-<li>configurable sentence-level concatenated部分是通过不同句嵌入模块得到的嵌入向量和通过CNN/biLSTM学习得到的词嵌入的特征向量组合得到的不同结果。</li>
-<li>loss函数部分：由于交叉熵函数不适合多标签的分类任务，提供了两个变种。
-<ul>
-<li>EBCE:<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_loss_EBCE.jpg" width="300px" /></li>
-<li>EBCE weight:<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_loss_EBCE_weight.jpg" width="300px" /></li>
-<li>NCE: <img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_loss_NCE.jpg" width="300px" /></li>
-<li>NCE weight:<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_loss_NCE_weight.png" width="150px" /></li>
-</ul>
+<li>
+<p>HiGRU（上图出去两个虚线框后的模型结构）: 主体结构分为两层，网络下层为左半边模型，在得到文本、话语的词嵌入（字嵌入）后，通过BiGRU网络（激励函数为tanh函数）获取句嵌入；网络上层为右半边模型，在得到句嵌入后，通过相似的结构（BiGRU）获得基于上下文信息的句嵌入，此后，一次通过全连接层和Softmax函数得到最终的情感分类。</p>
+</li>
+<li>
+<p>HiGRU-f（HiGRU+Fusion层）：在HiGRU结构的基础上又添加了Fusion层。Fusion层的作用是将各输入（下层网络中的词嵌入和上层网络中的句嵌入）与BiGRU结构的隐藏状态（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mrow><mi>f</mi><mi>o</mi><mi>r</mi><mi>w</mi><mi>a</mi><mi>r</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">h_{forward}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.10764em;">f</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight" style="margin-right:0.02691em;">w</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mrow><mi>b</mi><mi>a</mi><mi>c</mi><mi>k</mi><mi>w</mi><mi>a</mi><mi>r</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">h_{backward}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mord mathdefault mtight" style="margin-right:0.02691em;">w</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>）输出连接起来作为BiGRU结构的整体隐藏层。</p>
+</li>
+<li>
+<p>HiGRU-sf（HiGRU+Fusion+Attention）：在HiGRU结构的基础上又添加了Fusion层和Attention层，Fusion层同HiGRU-f，Attention层为自注意力层（self-attention），示意图如下：</p>
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper3_self-attention.png" width="400px">
+<p>其中：<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper3_attention-f.png" width="300px"></p>
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper3_attention-h.jpg" width="325px">	
 </li>
 </ul>
 <h1 id="experiment">Experiment</h1>
 <ul>
 <li>
-<p>验证了传统的机器学习算法在多标签任务中的短板：</p>
-<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_experiment_1.png" width="800px" />
+<p>验证了在IEMOCAP数据集上，HiGRU及两个变体都取得了更好的情感分类效果：</p>
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper3_experiment_1.png" width="500px">
 </li>
 <li>
-<p>检验了不同的模型结构（CNN/biLSTM; word embedding/sentence embedding; EBCE loss/NCE loss）对结果的影响:</p>
-<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_experiment_2.png" width="500px" /></li>
+<p>验证了在FRIENDS和EmotionPush数据集上能得到更好的效果，且训练集不同，结果各有差异：</p>
+<p>（F代表只在FRIENDS数据集上训练，E代表只在EmotionPush数据集上训练，F+E代表两者共同作为训练集）</p>
+<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper3_experiment_2.jpg" width="800px"></li>
 </ul>
 
                         </div>
@@ -272,7 +264,7 @@
 
                                             <p class="copyright-item">
                                                 <span>Permalink:</span>
-                                                <span><a href="https://Yhaoze.github.io/post/paperemnlp-2019multi-label-categorization-of-accounts-of-sexism-using-a-neural-framework/">https://Yhaoze.github.io/post/paperemnlp-2019multi-label-categorization-of-accounts-of-sexism-using-a-neural-framework/</a></span>
+                                                <span><a href="https://Yhaoze.github.io/post/papernaacl-2019higru-hierarchical-gated-recurrent-units-for-utterance-level-emotion-recognition/">https://Yhaoze.github.io/post/papernaacl-2019higru-hierarchical-gated-recurrent-units-for-utterance-level-emotion-recognition/</a></span>
                                             </p>
 
                                             <p class="copyright-item">
@@ -287,9 +279,9 @@
                                                         <span style="margin-right:15px">
                                                     <i class="post-share"></i>
                                                     <span>Share:</span>
-                                                        <a title="QR Code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://Yhaoze.github.io/post/paperemnlp-2019multi-label-categorization-of-accounts-of-sexism-using-a-neural-framework/"><i class="fa fa-qrcode"></i></a>
-                                                        <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://Yhaoze.github.io/post/paperemnlp-2019multi-label-categorization-of-accounts-of-sexism-using-a-neural-framework/&sharesource=qzone&title=[Paper][EMNLP-2019]Multi-label Categorization of Accounts of Sexism using a Neural Framework&pics=https://Yhaoze.github.io/images/avatar.png?v=1592052693859&summary="><i class="fa fa-qq"></i></a>
-                                                        <a title="Weibo" target="_blank" href="https://service.weibo.com/share/share.php?url=https://Yhaoze.github.io/post/paperemnlp-2019multi-label-categorization-of-accounts-of-sexism-using-a-neural-framework/&sharesource=weibo&title=[Paper][EMNLP-2019]Multi-label Categorization of Accounts of Sexism using a Neural Framework + " - " + &pic="https://Yhaoze.github.io/images/avatar.png?v=1592052693859 "><i class="fa fa-weibo "></i></a>
+                                                        <a title="QR Code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://Yhaoze.github.io/post/papernaacl-2019higru-hierarchical-gated-recurrent-units-for-utterance-level-emotion-recognition/"><i class="fa fa-qrcode"></i></a>
+                                                        <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://Yhaoze.github.io/post/papernaacl-2019higru-hierarchical-gated-recurrent-units-for-utterance-level-emotion-recognition/&sharesource=qzone&title=[Paper][NAACL-2019]HiGRU: Hierarchical Gated Recurrent Units for Utterance-level Emotion Recognition&pics=https://Yhaoze.github.io/images/avatar.png?v=1592052693859&summary="><i class="fa fa-qq"></i></a>
+                                                        <a title="Weibo" target="_blank" href="https://service.weibo.com/share/share.php?url=https://Yhaoze.github.io/post/papernaacl-2019higru-hierarchical-gated-recurrent-units-for-utterance-level-emotion-recognition/&sharesource=weibo&title=[Paper][NAACL-2019]HiGRU: Hierarchical Gated Recurrent Units for Utterance-level Emotion Recognition + " - " + &pic="https://Yhaoze.github.io/images/avatar.png?v=1592052693859 "><i class="fa fa-weibo "></i></a>
                                                         
                                                                 </span>
                                                                 <!--en-->
@@ -316,11 +308,11 @@
                                                                                 <!---->
                                                                                 <section class="post-nav">
                                                                                     
-                                                                                        <a class="prev" rel="prev" href="https://Yhaoze.github.io/post/papernaacl-2019multi-task-learning-for-multi-modal-emotion-recognition-and-sentiment-analysis/">
-                                                                                            [Paper][NAACL-2019]Multi-task Learning for Multi-modal Emotion Recognition and Sentiment Analysis
-                                                                                        </a>
-                                                                                        
                                                                                             
+                                                                                                <a class="next" rel="next" href="https://Yhaoze.github.io/post/papernaacl-2019multi-task-learning-for-multi-modal-emotion-recognition-and-sentiment-analysis/">
+                                                                                                    [Paper][NAACL-2019]Multi-task Learning for Multi-modal Emotion Recognition and Sentiment Analysis
+                                                                                                </a>
+                                                                                                
                                                                                 </section>
                     </article>
                 </div>
