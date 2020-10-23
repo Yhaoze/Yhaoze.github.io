@@ -81,7 +81,7 @@
                         <input id="switch_default" type="checkbox" class="switch_default">
                         <label for="switch_default" class="toggleBtn"></label>
             </div>
-            <form id="gridea-search-form" data-update="1603465057301" action="/search/index.html">
+            <form id="gridea-search-form" data-update="1603465873001" action="/search/index.html">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
             </form>
         </div>
@@ -100,7 +100,7 @@
                         <!--zh-->
                         <a id="mobile-toggle-theme-zh" class="a zh">&nbsp;&#x6697;&#x9ED1;</a>
                     </div>
-                    <form id="gridea-search-form" data-update="1603465057301" action="/search/index.html">
+                    <form id="gridea-search-form" data-update="1603465873001" action="/search/index.html">
                         <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
                     </form>
                     <!--en-->
@@ -175,9 +175,9 @@
                                 Date: <a href="#">2020-10-22</a>
                             </span>
                                     <span class="post-readtime">Reading Time:<a
-                                    href="#">11.8
+                                    href="#">11.7
                                     mins</a></span>
-                                    <span class="post-words">words:<a href="#">3292</a></span>
+                                    <span class="post-words">words:<a href="#">3280</a></span>
                                     
                                         <span class="post-category">
                                 Category:
@@ -271,7 +271,8 @@
 <h3 id="属性空间">属性空间</h3>
 <p>属性空间是由一组属性构成的语义空间。它们是零样本学习中使用最广泛的语义空间之一。</p>
 <p>在属性空间中，描述类的各种属性的术语被定义为空间的属性。空间属性通常是与类属性相对应的短语或单词（如识别任务中的“毛色”、“栖息环境”等）。而这些空间属性将用于形成语义空间，每个维度都对应一个空间属性。</p>
-<p>​		在动物识别任务中，考虑三个属性，“条纹”、“陆生”和“植食”三个属性。在这个空间中，“老虎类“对应的原型为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mn>1</mn><mo separator="true">,</mo><mn>1</mn><mo separator="true">,</mo><mn>0</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">[1,1,0]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mclose">]</span></span></span></span>，”马类“对应的原型为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo separator="true">,</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">[0,1,1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span>。</p>
+<pre><code>	在动物识别任务中，考虑三个属性，“条纹”、“陆生”和“植食”三个属性。在这个空间中，“老虎类“对应的原型为$[1,1,0]$，”马类“对应的原型为$[0,1,1]$。
+</code></pre>
 <p>上述举例所得到的属性值都是二进制的，通常而言，这个属性值也可以是实数，表示程度或该类拥有这个属性的置信度。</p>
 <h3 id="词汇空间">词汇空间</h3>
 <p>词汇空间是一种由词汇信息构建的语义空间，它是基于已知类的类标签和能够提供语义信息的数据集的语义空间。这种数据集可以是一些结构化的词汇数据库，例如WordNet。</p>
@@ -291,7 +292,8 @@
 <p>在这一类语义空间中，空间的维度不是人为设计的，每个类的原型是从某些机器学习模型的输出中获得的。在这些原型中，每个维度都没有明确的语义含义，相反，语义信息包含在整个原型中。用于提取原型的模型可以在其他问题中进行预训练，或者专门针对零样本学习问题进行训练。</p>
 <h3 id="标签嵌入空间">标签嵌入空间</h3>
 <p>标签嵌入空间是一种通过对类标签做嵌入获得类原型的语义空间。这种空间的技术源自自然语言处理的词嵌入技术。在零样本学习中，每个类的标签都是单词或短语，嵌入过程中，语义相似的单词或短语被嵌入为临近的向量，而语义差距大的单词或短语则被嵌入为相距很远的向量。以此方法获得的嵌入向量便是语义空间的原型。</p>
-<p>​		在现有作品中，采用了不同的嵌入技术，如：Word2Vec和Glove。此外，学习嵌入模型的语料库也包含一般的语料库（如Wikipedia）和特定的专业语料库（如Flickr）。</p>
+<pre><code>	在现有作品中，采用了不同的嵌入技术，如：Word2Vec和Glove。此外，学习嵌入模型的语料库也包含一般的语料库（如Wikipedia）和特定的专业语料库（如Flickr）。
+</code></pre>
 <h3 id="描述嵌入空间">描述嵌入空间</h3>
 <p>描述嵌入空间是通过对类的文本描述做嵌入来获得类原型的语义空间。与<strong>人工干预式语义空间</strong>中的<strong>关键词空间</strong>类似，描述嵌入空间中的语义信息也来自于文本描述。</p>
 <p>这两种方式的主要差异为：关键词空间通过提取文本描述中的关键词，并将每一个关键词作为语义空间中的一个维度来构建空间；而描述嵌入空间则通过一些学习模型来构建语义空间。这些模型的输入输出分别为文本描述和类原型。</p>
@@ -364,8 +366,8 @@
                                                     <i class="post-share"></i>
                                                     <span>Share:</span>
                                                         <a title="QR Code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://Yhaoze.github.io/post/summary2020zero-shot-learning-settings-methods-and-applications/"><i class="fa fa-qrcode"></i></a>
-                                                        <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://Yhaoze.github.io/post/summary2020zero-shot-learning-settings-methods-and-applications/&sharesource=qzone&title=[Summary][2020]Zero-Shot Learning[未完]&pics=https://Yhaoze.github.io/images/avatar.png?v=1603465057301&summary="><i class="fa fa-qq"></i></a>
-                                                        <a title="Weibo" target="_blank" href="https://service.weibo.com/share/share.php?url=https://Yhaoze.github.io/post/summary2020zero-shot-learning-settings-methods-and-applications/&sharesource=weibo&title=[Summary][2020]Zero-Shot Learning[未完] + " - " + &pic="https://Yhaoze.github.io/images/avatar.png?v=1603465057301 "><i class="fa fa-weibo "></i></a>
+                                                        <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://Yhaoze.github.io/post/summary2020zero-shot-learning-settings-methods-and-applications/&sharesource=qzone&title=[Summary][2020]Zero-Shot Learning[未完]&pics=https://Yhaoze.github.io/images/avatar.png?v=1603465873001&summary="><i class="fa fa-qq"></i></a>
+                                                        <a title="Weibo" target="_blank" href="https://service.weibo.com/share/share.php?url=https://Yhaoze.github.io/post/summary2020zero-shot-learning-settings-methods-and-applications/&sharesource=weibo&title=[Summary][2020]Zero-Shot Learning[未完] + " - " + &pic="https://Yhaoze.github.io/images/avatar.png?v=1603465873001 "><i class="fa fa-weibo "></i></a>
                                                         
                                                                 </span>
                                                                 <!--en-->
@@ -465,7 +467,7 @@
                     CheckVersion();
                     
                     var newDate = new Date();
-                    newDate.setTime(1603465057301);
+                    newDate.setTime(1603465873001);
                     console.log(" Blog Update Time: " + newDate.toLocaleDateString());
                     console.log("\n %c \u26a1Theme:Chic Author's Blog:https://blog.itjoker.cn  Write By ITJoker  \n\n", "color: #ffffff; background: rgba(49, 49, 49, 0.85); padding:5px 0;border-radius:5px;");
                 </script>
