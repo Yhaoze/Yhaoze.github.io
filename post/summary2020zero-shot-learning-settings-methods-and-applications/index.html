@@ -1,22 +1,202 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://Yhaoze.github.io</id>
-    <title>Yhaoze&apos;s blog</title>
-    <updated>2020-10-23T14:54:17.928Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://Yhaoze.github.io"/>
-    <link rel="self" href="https://Yhaoze.github.io/atom.xml"/>
-    <subtitle>吾尝终日而思矣，不如须臾之所学也</subtitle>
-    <logo>https://Yhaoze.github.io/images/avatar.png</logo>
-    <icon>https://Yhaoze.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, Yhaoze&apos;s blog</rights>
-    <entry>
-        <title type="html"><![CDATA[[Summary][2020]Zero-Shot Learning[未完]]]></title>
-        <id>https://Yhaoze.github.io/post/summary2020zero-shot-learning-settings-methods-and-applications/</id>
-        <link href="https://Yhaoze.github.io/post/summary2020zero-shot-learning-settings-methods-and-applications/">
-        </link>
-        <updated>2020-10-22T11:17:25.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="overview"><strong>Overview</strong></h1>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<title>
+    Yhaoze&#39;s blog
+</title>
+<!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.js"></script><![endif]-->
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<meta name="author" content="木昜">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<script async src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/itjoker233/Gridea-theme-Chic/assets/media/css/style.min.css" />
+<link rel="stylesheet" href="https://Yhaoze.github.io/styles/main.css" />
+<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/itjoker233/Gridea-theme-Chic/assets/media/script/tocbot.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/itjoker233/Gridea-theme-Chic/assets/media/script/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/itjoker233/Gridea-theme-Chic/assets/media/script/icon.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ITJoker233/ITJoker233.github.io@1.0.12/CDN/js/Card/prism.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ITJoker233/ITJoker233.github.io@1.0.12/CDN/css/Card/prism.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js"></script>
+
+    <!--点击特效-->
+    <script src="https://cdn.jsdelivr.net/gh/ITJoker233/ITJoker233.github.io@latest/CDN/js/love.min.js"></script>
+    
+            <!--CDN样式-->
+            <script src="https://cdn.jsdelivr.net/gh/ITJoker233/ITJoker233.github.io@latest/CDN/js/hit-kounter-lc-0.3.0.js"></script>
+            <script src="https://cdn1.lncld.net/static/js/av-min-1.5.0.js"></script>
+            
+                <script>
+                    (function() {
+                        var bp = document.createElement('script');
+                        var curProtocol = window.location.protocol.split(':')[0];
+                        if (curProtocol === 'https') {
+                            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+                        } else {
+                            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+                        }
+                        var s = document.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(bp, s);
+                    })();
+                </script>
+                
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <a href="https://Yhaoze.github.io">
+                    Yhaoze&#39;s blog
+                </a>
+            </div>
+
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/">
+                        首页
+                    </a>
+                    
+                    <a class="menu-item" href="/archives">
+                        归档
+                    </a>
+                    
+                    <a class="menu-item" href="/tags">
+                        标签
+                    </a>
+                    
+                    <a class="menu-item" href="/post/about">
+                        关于
+                    </a>
+                    
+                        <input id="switch_default" type="checkbox" class="switch_default">
+                        <label for="switch_default" class="toggleBtn"></label>
+            </div>
+            <form id="gridea-search-form" data-update="1603464853119" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
+            </form>
+        </div>
+    </nav>
+
+    
+        <nav class="navbar-mobile" id="nav-mobile">
+            <div class="container">
+                <div class="navbar-header">
+                    <div>
+                        <a href="https://Yhaoze.github.io">
+                            Yhaoze&#39;s blog
+                        </a>
+                        <!--en-->
+                        <a id="mobile-toggle-theme-en" class="a en">&nbsp;Dark</a>
+                        <!--zh-->
+                        <a id="mobile-toggle-theme-zh" class="a zh">&nbsp;&#x6697;&#x9ED1;</a>
+                    </div>
+                    <form id="gridea-search-form" data-update="1603464853119" action="/search/index.html">
+                        <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
+                    </form>
+                    <!--en-->
+                    <div class="menu-toggle" id="menu-toggle-en" onclick="mobileBtn()">&#9776; Menu</div>
+                    <!--zh-->
+                    <div class="menu-toggle" id="menu-toggle-zh" onclick="mobileBtn()">&#9776; &#x83DC;&#x5355;</div>
+
+                </div>
+                <div class="menu" id="mobile-menu">
+                    
+                        <a class="menu-item" href="/">
+                            首页
+                        </a>
+                        
+                        <a class="menu-item" href="/archives">
+                            归档
+                        </a>
+                        
+                        <a class="menu-item" href="/tags">
+                            标签
+                        </a>
+                        
+                        <a class="menu-item" href="/post/about">
+                            关于
+                        </a>
+                        
+                </div>
+            </div>
+        </nav>
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementById("menu-toggle-en");
+        var toggleMenu_zh = document.getElementById("menu-toggle-zh");
+
+        var mobileMenu = document.getElementById("mobile-menu");
+        if (toggleMenu.display != "none") {
+            if (toggleMenu.classList.contains("active")) {
+                toggleMenu.classList.remove("active")
+                mobileMenu.classList.remove("active")
+            } else {
+                toggleMenu.classList.add("active")
+                mobileMenu.classList.add("active")
+            }
+        } else if (toggleMenu_zh.display != "none") {
+            if (toggleMenu_zh.classList.contains("active")) {
+                toggleMenu_zh.classList.remove("active")
+                mobileMenu.classList.remove("active")
+            } else {
+                toggleMenu_zh.classList.add("active")
+                mobileMenu.classList.add("active")
+            }
+        }
+
+    }
+</script>
+            <div class="main">
+                <div class="container">
+                    <article class="post-wrap">
+                        <header class="post-header">
+                            <h1 class="post-title">
+                                [Summary][2020]Zero-Shot Learning[未完]
+                            </h1>
+                            
+                                <!--en-->
+                                <div class="post-meta en">
+                                    Author:
+                                    <a itemprop="author" rel="author" href="/">
+                                        Yhaoze's blog
+                                    </a>
+                                    <span class="post-time">
+                                Date: <a href="#">2020-10-22</a>
+                            </span>
+                                    <span class="post-readtime">Reading Time:<a
+                                    href="#">11.8
+                                    mins</a></span>
+                                    <span class="post-words">words:<a href="#">3292</a></span>
+                                    
+                                        <span class="post-category">
+                                Category:
+                                
+                                <a href="https://Yhaoze.github.io/tag/YeNjxLAXE/">zero-shot learning</a>
+                                
+                                <a href="https://Yhaoze.github.io/tag/HDINnhTkk/">review</a>
+                                
+                            </span>
+                                        
+                                            Views:
+                                            <span data-hk-page="current"> - </span>
+                                            
+                                </div>
+                                
+                        </header>
+                        
+                        <div class="post-content">
+                            <h1 id="overview"><strong>Overview</strong></h1>
 <ul>
 <li>
 <p>监督学习的缺陷：</p>
@@ -154,190 +334,187 @@
 <h3 id="优劣分析-2">优劣分析</h3>
 <h3 id="多标签零样本学习">多标签零样本学习</h3>
 <h3 id="广义零样本学习">广义零样本学习</h3>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[Paper][NAACL-2019]HiGRU: Hierarchical Gated Recurrent Units for Utterance-level Emotion Recognition]]></title>
-        <id>https://Yhaoze.github.io/post/papernaacl-2019higru-hierarchical-gated-recurrent-units-for-utterance-level-emotion-recognition/</id>
-        <link href="https://Yhaoze.github.io/post/papernaacl-2019higru-hierarchical-gated-recurrent-units-for-utterance-level-emotion-recognition/">
-        </link>
-        <updated>2020-06-13T07:27:56.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="overview">Overview</h1>
-<ul>
-<li>
-<p>应用场景：对话模型中的情感识别</p>
-</li>
-<li>
-<p>解决问题：</p>
-<ul>
-<li>相同的单词在不同的上下文语境中可以传递不同的情感；</li>
-<li>在一般对话中很少见到某些强烈的情绪情感；</li>
-<li>很难有效地获取远程上下文信息。</li>
-</ul>
-</li>
-<li>
-<p>主要贡献：</p>
-<ul>
-<li>提出了HiGRU框架，能够更准确地学习语句的嵌入信息，并据此识别情感；</li>
-<li>提出了两种渐进式的HiGRU变体——HiGRU-f和HiGRU-sf，分别融合各个单词、话语级别的信息和长时上下文信息。</li>
-</ul>
-</li>
-<li>
-<p>数据来源：</p>
-<ul>
-<li>IEMOCAP：它包含了大约12个小时的视听数据，包括视频、语音、面部动作捕捉和文本转录内容，含有四种情感标签。</li>
-<li>FRIENDS：来自“老友记”的对话（及标注），包含八种情感标签（但进选取四个训练）。</li>
-<li>EmotionPush: 这个数据集中包含了1000个Facebook上的私人对话，包含有和FRIENDS相同的八种情感标签（同样只选取四个训练）。</li>
-</ul>
-</li>
-</ul>
-<h1 id="model">Model</h1>
-<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper3_model.png" width="900px">
-<ul>
-<li>
-<p>HiGRU（上图出去两个虚线框后的模型结构）: 主体结构分为两层，网络下层为左半边模型，在得到文本、话语的词嵌入（字嵌入）后，通过BiGRU网络（激励函数为tanh函数）获取句嵌入；网络上层为右半边模型，在得到句嵌入后，通过相似的结构（BiGRU）获得基于上下文信息的句嵌入，此后，一次通过全连接层和Softmax函数得到最终的情感分类。</p>
-</li>
-<li>
-<p>HiGRU-f（HiGRU+Fusion层）：在HiGRU结构的基础上又添加了Fusion层。Fusion层的作用是将各输入（下层网络中的词嵌入和上层网络中的句嵌入）与BiGRU结构的隐藏状态（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mrow><mi>f</mi><mi>o</mi><mi>r</mi><mi>w</mi><mi>a</mi><mi>r</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">h_{forward}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.10764em;">f</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight" style="margin-right:0.02691em;">w</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mrow><mi>b</mi><mi>a</mi><mi>c</mi><mi>k</mi><mi>w</mi><mi>a</mi><mi>r</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">h_{backward}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mord mathdefault mtight" style="margin-right:0.02691em;">w</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>）输出连接起来作为BiGRU结构的整体隐藏层。</p>
-</li>
-<li>
-<p>HiGRU-sf（HiGRU+Fusion+Attention）：在HiGRU结构的基础上又添加了Fusion层和Attention层，Fusion层同HiGRU-f，Attention层为自注意力层（self-attention），示意图如下：</p>
-<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper3_self-attention.png" width="400px">
-<p>其中：<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper3_attention-f.png" width="300px"></p>
-<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper3_attention-h.jpg" width="325px">	
-</li>
-</ul>
-<h1 id="experiment">Experiment</h1>
-<ul>
-<li>
-<p>验证了在IEMOCAP数据集上，HiGRU及两个变体都取得了更好的情感分类效果：</p>
-<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper3_experiment_1.png" width="500px">
-</li>
-<li>
-<p>验证了在FRIENDS和EmotionPush数据集上能得到更好的效果，且训练集不同，结果各有差异：</p>
-<p>（F代表只在FRIENDS数据集上训练，E代表只在EmotionPush数据集上训练，F+E代表两者共同作为训练集）</p>
-<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper3_experiment_2.jpg" width="800px"></li>
-</ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[Paper][NAACL-2019]Multi-task Learning for Multi-modal Emotion Recognition and Sentiment Analysis]]></title>
-        <id>https://Yhaoze.github.io/post/papernaacl-2019multi-task-learning-for-multi-modal-emotion-recognition-and-sentiment-analysis/</id>
-        <link href="https://Yhaoze.github.io/post/papernaacl-2019multi-task-learning-for-multi-modal-emotion-recognition-and-sentiment-analysis/">
-        </link>
-        <updated>2020-06-06T11:11:28.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="overview">Overview</h1>
-<ul>
-<li>
-<p>应用场景：多种不同的信息输入（如：文本、音频、视频信息）情况下的情感识别</p>
-</li>
-<li>
-<p>主要贡献：</p>
-<ul>
-<li>利用有效的多模式框架，将两个相关任务（即情感识别和情绪分类任务）的相互依存关系改善结果；</li>
-<li>提出了语境间（inter-modal）注意力机制，该机制有助于模型同时为做出贡献的语境话语和/或语气分配权重；</li>
-<li>提供了“最先进的”（文章自称）情感识别和情绪分类方法。</li>
-</ul>
-</li>
-<li>
-<p>数据来源：CMU Multi-modal Opinion Sentiment and Emotion Intensity (CMU-MOSEI) dataset</p>
-<p>​	这个数据集包含了文本、音频、视频三种不同模式的输入。</p>
-</li>
-</ul>
-<h1 id="model">Model</h1>
-<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper2_model.png" width="600px" />
-<ul>
-<li>
-<p>embedding: Text - GloVe; Visual - Facets; Acoustic - CovaRap.</p>
-</li>
-<li>
-<p>主模型：三种不同模式的输入信息分别通过三个BiGRU网络得到三个不同的特征矩阵，接着由CIM-Attention层学习模式两两之间的关联情况，最后分别通过softmax层（情感识别）和sigmoid层（情绪分类）得到最终的结果。</p>
-</li>
-<li>
-<p>CIM-Attention:</p>
-<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper2_CIM-Attention.jpg" width="300px" />
-</li>
-</ul>
-<h1 id="experiment">Experiment</h1>
-<ul>
-<li>验证了多任务模型会比单任务模型具有更好的效果：</li>
-</ul>
-<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper2_experiment_1.jpg" width="700px" />
-<ul>
-<li>对CIM-Attention的attention weights做了可视化处理，帮助解释模型的工作原理：</li>
-</ul>
-<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper2_experiment_2.jpg" width="700px" />]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[Paper][EMNLP-2019]Multi-label Categorization of Accounts of Sexism using a Neural Framework]]></title>
-        <id>https://Yhaoze.github.io/post/paperemnlp-2019multi-label-categorization-of-accounts-of-sexism-using-a-neural-framework/</id>
-        <link href="https://Yhaoze.github.io/post/paperemnlp-2019multi-label-categorization-of-accounts-of-sexism-using-a-neural-framework/">
-        </link>
-        <updated>2020-05-29T04:57:36.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="overview">Overview</h1>
-<ul>
-<li>
-<p>应用场景：网络上关于性别歧视内容的识别与分类</p>
-</li>
-<li>
-<p>数据来源：Everyday Sexism Project website中的13023个条目，并由10名注释人员标注标签</p>
-</li>
-<li>
-<p>嵌入模型：</p>
-<ul>
-<li>
-<p>词嵌入：</p>
-<ul>
-<li>ELMo (Embeddings from Language Models)</li>
-<li>GloVe (Global Vectors)</li>
-<li>fastText</li>
-</ul>
-</li>
-<li>
-<p>句嵌入：</p>
-<ul>
-<li>BERT (Bidirectional Encoder Representations from Transformers)</li>
-<li>USE (Universal Sentence Encoder)</li>
-<li>InferSent</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>贡献：</p>
-<ul>
-<li>提出了一个用于性别歧视问题的、多标签分类的神经框架</li>
-<li>对任何类型的性别歧视问题进行了考虑</li>
-<li>提供了一个包括13023个性别歧视说明的数据集，并制定了23种性别歧视类别</li>
-</ul>
-</li>
-</ul>
-<h1 id="model">Model</h1>
-<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_model.png" width="600px" />
-<ul>
-<li>word embedding部分为多个不同的词嵌入模块共同组成；</li>
-<li>sentence embedding部分为多个不同的句嵌入模块组成；</li>
-<li>configurable word-level concatenated部分是通过不同的词嵌入模块得到的嵌入向量组合得到的不同结果；</li>
-<li>configurable sentence-level concatenated部分是通过不同句嵌入模块得到的嵌入向量和通过CNN/biLSTM学习得到的词嵌入的特征向量组合得到的不同结果。</li>
-<li>loss函数部分：由于交叉熵函数不适合多标签的分类任务，提供了两个变种。
-<ul>
-<li>EBCE:<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_loss_EBCE.jpg" width="300px" /></li>
-<li>EBCE weight:<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_loss_EBCE_weight.jpg" width="300px" /></li>
-<li>NCE: <img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_loss_NCE.jpg" width="300px" /></li>
-<li>NCE weight:<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_loss_NCE_weight.png" width="150px" /></li>
-</ul>
-</li>
-</ul>
-<h1 id="experiment">Experiment</h1>
-<ul>
-<li>
-<p>验证了传统的机器学习算法在多标签任务中的短板：</p>
-<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_experiment_1.png" width="800px" />
-</li>
-<li>
-<p>检验了不同的模型结构（CNN/biLSTM; word embedding/sentence embedding; EBCE loss/NCE loss）对结果的影响:</p>
-<img src="https://raw.githubusercontent.com/Yhaoze/Picbed/master/paper1_experiment_2.png" width="500px" /></li>
-</ul>
-]]></content>
-    </entry>
-</feed>
+
+                        </div>
+                        
+                                
+                                    
+                                        <!--en-->
+                                        <section class="post-copyright en">
+                                            <p class="copyright-item">
+                                                <span>Author:</span>
+                                                <span>Yhaoze's blog</span>
+                                            </p>
+
+                                            <p class="copyright-item">
+                                                <span>Permalink:</span>
+                                                <span><a href="https://Yhaoze.github.io/post/summary2020zero-shot-learning-settings-methods-and-applications/">https://Yhaoze.github.io/post/summary2020zero-shot-learning-settings-methods-and-applications/</a></span>
+                                            </p>
+
+                                            <p class="copyright-item">
+                                                <span>License:</span>
+                                                <span>MIT License</span>
+                                            </p>
+                                        </section>
+                                        
+                                                
+                                                    
+                                                        <!-- Share-->
+                                                        <span style="margin-right:15px">
+                                                    <i class="post-share"></i>
+                                                    <span>Share:</span>
+                                                        <a title="QR Code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://Yhaoze.github.io/post/summary2020zero-shot-learning-settings-methods-and-applications/"><i class="fa fa-qrcode"></i></a>
+                                                        <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://Yhaoze.github.io/post/summary2020zero-shot-learning-settings-methods-and-applications/&sharesource=qzone&title=[Summary][2020]Zero-Shot Learning[未完]&pics=https://Yhaoze.github.io/images/avatar.png?v=1603464853119&summary="><i class="fa fa-qq"></i></a>
+                                                        <a title="Weibo" target="_blank" href="https://service.weibo.com/share/share.php?url=https://Yhaoze.github.io/post/summary2020zero-shot-learning-settings-methods-and-applications/&sharesource=weibo&title=[Summary][2020]Zero-Shot Learning[未完] + " - " + &pic="https://Yhaoze.github.io/images/avatar.png?v=1603464853119 "><i class="fa fa-weibo "></i></a>
+                                                        
+                                                                </span>
+                                                                <!--en-->
+                                                                <section class="post-tags en ">
+                                                                    <div>
+                                                                        <span>Tag(s):</span>
+                                                                        <span class="tag ">
+                        
+                        
+                        <a href="https://Yhaoze.github.io/tag/YeNjxLAXE/">#
+                                                zero-shot learning
+                                                    </a>
+                                                    
+                        <a href="https://Yhaoze.github.io/tag/HDINnhTkk/">#
+                                                review
+                                                    </a>
+                                                    
+                                                        
+                                                            </span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <a href="javascript:window.history.back();">back</a>
+                                                                        <span>&dot;</span>
+                                                                        <a href="#">home</a>
+                                                                    </div>
+                                                                </section>
+                                                                
+                                                                                <!---->
+                                                                                <section class="post-nav">
+                                                                                    
+                                                                                            
+                                                                                                <a class="next" rel="next" href="https://Yhaoze.github.io/post/papernaacl-2019higru-hierarchical-gated-recurrent-units-for-utterance-level-emotion-recognition/">
+                                                                                                    [Paper][NAACL-2019]HiGRU: Hierarchical Gated Recurrent Units for Utterance-level Emotion Recognition
+                                                                                                </a>
+                                                                                                
+                                                                                </section>
+                    </article>
+                </div>
+                
+                                            
+            </div>
+    </div>
+    </div>
+    </div>
+    
+        <footer id="footer" class="footer">
+            <div class="copyright">
+                
+                        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+                            
+                                <b id="hitokoto"></b><br>
+                                
+                                        <svg viewBox="0 0 1024 1024" style="margin-left: 5px;margin-right: 5px;" version="1.0" width="8" height="8" class="my-face">
+            <path
+                d="M863.597631 513.574282l-271.33965-140.213484L729.783667 81.926656c3.583731-7.87141 7.167462-15.742819 7.167462-25.214109C736.887134 25.226908 708.345275 0.012799 672.635953 0.012799a63.611229 63.611229 0 0 0-39.293053 12.607055c-1.791866 1.59988-3.519736 3.19976-5.311602 3.19976L147.87531 418.925381a55.547834 55.547834 0 0 0-19.646527 47.356448c1.791866 17.278704 14.27093 33.021523 32.125591 42.492813l271.33965 141.749369L292.504463 945.221908c-12.479064 25.214109-1.791866 53.563983 23.166262 69.306802 10.751194 6.335525 23.230258 9.47129 35.709322 9.47129 16.062795 0 32.125591-4.735645 44.604655-15.742819l480.091993-403.297753a55.547834 55.547834 0 0 0 19.646526-47.228458 61.243407 61.243407 0 0 0-32.12559-44.156688z"
+                fill="#93b5cf"></path>
+        </svg>
+                                        Yhaoze&#39;s blog &copy;Copyright
+                                            <script>
+                                                var date = new Date();
+                                                document.write("" + date.getFullYear());
+                                            </script>
+                                            | Powered by
+                                            <a href="https://coding.net" target="_blank">
+                                                Coding.net
+                                            </a>
+            </div>
+            <div id="update" style="display:none;">
+                on
+            </div>
+            
+                <div id="version" style="display:none;">
+                    1.7.4
+                </div>
+                
+                    <script>
+                        var pat = '';
+                        
+                        document.write('<div id="home_path" style="display:none;">' + document.location.protocol + '//' + window.document.location.hostname + pat + '</div>')
+                    </script>
+        </footer>
+        
+            <script src='https://cdn.jsdelivr.net/npm/live2d-widget@3.x/lib/L2Dwidget.min.js'></script>
+            
+                <script>
+                    
+                    
+                    loadlive2d();
+                    
+                    
+                    hitokoto();
+                    
+                    getStar();
+                    hljs.initHighlighting();
+                    console.clear();
+                    
+                    CheckVersion();
+                    
+                    var newDate = new Date();
+                    newDate.setTime(1603464853119);
+                    console.log(" Blog Update Time: " + newDate.toLocaleDateString());
+                    console.log("\n %c \u26a1Theme:Chic Author's Blog:https://blog.itjoker.cn  Write By ITJoker  \n\n", "color: #ffffff; background: rgba(49, 49, 49, 0.85); padding:5px 0;border-radius:5px;");
+                </script>
+                
+                    <div id="tp-weather-widget" style="background: #666;display: flex;"></div>
+                    <script>
+                        (function(T, h, i, n, k, P, a, g, e) {
+                            g = function() {
+                                P = h.createElement(i);
+                                a = h.getElementsByTagName(i)[0];
+                                P.src = k;
+                                P.charset = "utf-8";
+                                P.async = 1;
+                                a.parentNode.insertBefore(P, a)
+                            };
+                            T["ThinkPageWeatherWidgetObject"] = n;
+                            T[n] || (T[n] = function() {
+                                (T[n].q = T[n].q || []).push(arguments)
+                            });
+                            T[n].l = +new Date();
+                            if (T.attachEvent) {
+                                T.attachEvent("onload", g)
+                            } else {
+                                T.addEventListener("load", g, false)
+                            }
+                        }(window, document, "script", "tpwidget", "//widget.seniverse.com/widget/chameleon.js"))
+                    </script>
+                    <script>
+                        var wearther_margin = "10px 10px";
+                        
+                        tpwidget("init", {
+                            "flavor": "bubble",
+                            "location": "WX4FBXXFKE4F",
+                            "geolocation": "enabled",
+                            "position": "bottom-left",
+                            "margin": wearther_margin,
+                            "language": "zh-chs",
+                            "unit": "c",
+                            "theme": "chameleon",
+                            "uid": "UFC977E1C7",
+                            "hash": "213ad798bc472dc365da3a9d4a9ff115"
+                        });
+                        tpwidget("show");
+                    </script>
+                    
+        </div>
+</body>
+<script>
+    scroll();
+</script>
+
+</html>
